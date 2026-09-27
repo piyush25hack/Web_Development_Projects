@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Digital & Cyber Operations | Matrix Era</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        matrix: '#00ff66',
+                        cyberCyan: '#00f0ff',
+                        darkBg: '#020803',
+                    },
+                    fontFamily: {
+                        mono: ['"Share Tech Mono"', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020803;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        /* Matrix Rain Canvas Background */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+        /* Apple-style Glassmorphism Cards */
+        .apple-card {
+            background: rgba(4, 15, 7, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 102, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .apple-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 4, 255, 0.7);
+            box-shadow: 0 15px 35px -10px rgba(0, 255, 102, 0.25);
+        }
+        /* Dropdown Menu */
+        .dropdown-container:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-matrix selection:text-black">
+
+    <!-- Matrix Character Falling Canvas -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#020803]/85 backdrop-blur-md border-b border-matrix/20">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-mono text-2xl font-bold tracking-wider text-matrix flex items-center gap-2">
+                <span>&lt;NEXUS_MATRIX/&gt;</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-mono">
+                <!-- Services Dropdown -->
+                <div class="relative dropdown-container py-6">
+                    <a href="#services" class="hover:text-matrix transition-colors flex items-center gap-1 cursor-pointer">
+                        Services ▾
+                    </a>
+                    <div class="dropdown-menu absolute top-full left-0 w-72 bg-[#040f07] border border-matrix/30 rounded-xl shadow-2xl py-4 backdrop-blur-xl flex flex-col space-y-3 px-5 text-xs">
+                        <a href="#services" class="hover:text-matrix transition-colors">⚡ Digital Marketing & Growth</a>
+                        <a href="#services" class="hover:text-matrix transition-colors">🐍 Python Scripting & Automation</a>
+                        <a href="#services" class="hover:text-matrix transition-colors">🌐 Full Stack Web Development</a>
+                        <a href="#services" class="hover:text-matrix transition-colors">🛡️ Ethical Hacking & Cybersecurity</a>
+                        <a href="#services" class="hover:text-matrix transition-colors">📰 News Productions</a>
+                        <a href="#services" class="hover:text-matrix transition-colors">🎬 2D & 3D Animation (Blender)</a>
+                    </div>
+                </div>
+
+                <a href="#about" class="hover:text-matrix transition-colors">Protocol</a>
+                <a href="#contact" class="hover:text-matrix transition-colors">Terminal</a>
+            </div>
+
+            <a href="#contact" class="bg-matrix/10 border border-matrix text-matrix px-5 py-2 rounded-full text-sm font-mono tracking-wider hover:bg-matrix hover:text-black transition-all shadow-[0_0_15px_rgba(0,255,102,0.2)]">
+                Secure_Connect()
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative pt-20">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <span class="font-mono text-matrix text-xs md:text-sm tracking-widest uppercase bg-matrix/10 px-4 py-1.5 rounded-full border border-matrix/30 inline-block">
+                // Digital Mastery (Electronic Media) //
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                Enter The Matrix of <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-matrix to-emerald-400">Digital & Cyber Supremacy.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light">
+                Advanced cybersecurity audits, offensive growth marketing, automated scripting, and elite media production.
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="bg-matrix text-black font-bold px-8 py-4 rounded-full text-base hover:bg-emerald-400 transition-all shadow-lg shadow-matrix/20 font-mono">
+                    Explore Capabilities
+                </a>
+                <a href="#contact" class="border border-matrix/40 text-matrix font-semibold px-8 py-4 rounded-full text-base hover:border-matrix hover:bg-matrix/10 transition-all font-mono">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center space-y-4 mb-20">
+            <h2 class="font-mono text-matrix tracking-widest uppercase text-sm">// Capabilities Matrix</h2>
+            <h3 class="text-4xl md:text-5xl font-bold tracking-tight">Engineered For Total Dominance</h3>
+        </div>
+
+        < class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Service 1 -->
+            <div class="apple-card p-8 rounded-2xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="text-matrix mb-3 text-2xl">📈</div>
+                    <h4 class="text-2xl font-bold text-white mb-2">Digital Marketing</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Algorithmic SEO, high-conversion growth funnels, and data analytics engineered to scale market penetration.</p>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-matrix">
+                    <span>GROWTH ENGINE</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="apple-card p-8 rounded-2xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="text-matrix mb-3 text-2xl">🛡️</div>
+                    <h4 class="text-2xl font-bold text-white mb-2">Cybersecurity</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Advanced penetration testing, ethical hacking, vulnerability audits, and bulletproof cryptographic systems.</p>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-matrix">
+                    <span>OFFENSIVE DEFENSE</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="apple-card p-8 rounded-2xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="text-matrix mb-3 text-2xl">🐍</div>
+                    <h4 class="text-2xl font-bold text-white mb-2">Python Scripting</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Custom automation scripts, web scraping pipelines, and secure backend engines built for extreme execution speed.</p>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-matrix">
+                    <span>AUTOMATION CORE</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="apple-card p-8 rounded-2xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="text-matrix mb-3 text-2xl">💻</div>
+                    <h4 class="text-2xl font-bold text-white mb-2">Full Stack Web Dev</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Secure, ultra-fast web apps built with modern frameworks, clean code standards, and fluid Apple-grade UI.</p>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-matrix">
+                    <span>WEB ARCHITECTURE</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="apple-card p-8 rounded-2xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="text-matrix mb-3 text-2xl">📰</div>
+                    <h4 class="text-2xl font-bold text-white mb-2">News Productions</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Automated digital syndication pipelines, streaming tech, and high-impact editorial media distribution.</p>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-matrix">
+                    <span>MEDIA PIPELINE</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="apple-card p-8 rounded-2xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="text-matrix mb-3 text-2xl">🧊</div>
+                    <h4 class="text-2xl font-bold text-white mb-2">2D & 3D Animation</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Immersive 3D modeling, texturing, rigging, and cinematic renders powered by professional Blender pipelines.</p>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-matrix">
+                    <span>BLENDER 3D STUDIO</span>
+                    <span>→</span>
+                </div>
+            </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-32 px-6 max-w-4xl mx-auto">
+        <div class="apple-card p-10 md:p-16 rounded-3xl relative overflow-hidden border border-matrix/30">
+            <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-matrix/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="text-center space-y-4 mb-12">
+                <h2 class="font-mono text-matrix tracking-widest uppercase text-sm">// Secure Terminal</h2>
+                <h3 class="text-3xl md:text-4xl font-bold">Initiate Transmission</h3>
+            </div>
+
+            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Packet Transmitted Successfully. Our team will contact you.');">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-mono text-xs text-gray-400 uppercase tracking-wider mb-2">Agent / Name</label>
+                        <input type="text" required class="w-full bg-[#020803] border border-matrix/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-matrix transition-colors font-mono">
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs text-gray-400 uppercase tracking-wider mb-2">Secure Email</label>
+                        <input type="email" required class="w-full bg-[#020803] border border-matrix/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-matrix transition-colors font-mono">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-mono text-xs text-gray-400 uppercase tracking-wider mb-2">Payload / Project Brief</label>
+                    <textarea rows="4" required class="w-full bg-[#020803] border border-matrix/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-matrix transition-colors font-mono"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-matrix text-black font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-emerald-400 transition-all shadow-lg shadow-matrix/20 font-mono">
+                    Transmit Packet_
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section with SVG Icons & Copyright 2026 -->
+    <footer class="border-t border-matrix/20 bg-[#010402] py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            
+            <!-- Brand & Copyright -->
+            <div class="space-y-2 text-center md:text-left">
+                <span class="font-mono text-xl font-bold text-matrix">&lt;NEXUS_MATRIX/&gt;</span>
+                <p class="text-gray-500 text-sm font-mono">© 2026 Nexus Studio. All rights reserved.</p>
+            </div>
+
+            <!-- Social Media Icons (SVG) -->
+            <div class="flex items-center space-x-6 text-gray-400">
+                <!-- Instagram -->
+                <a href="https://instagram.com" target="_blank" class="hover:text-matrix transition-colors" title="Instagram">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <!-- Facebook -->
+                <a href="https://facebook.com" target="_blank" class="hover:text-matrix transition-colors" title="Facebook">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com" target="_blank" class="hover:text-matrix transition-colors" title="LinkedIn">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <!-- Twitter / X -->
+                <a href="https://twitter.com" target="_blank" class="hover:text-matrix transition-colors" title="Twitter">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+
+            <!-- Policies -->
+            <div class="flex items-center space-x-6 text-xs text-gray-500 font-mono">
+                <a href="#" class="hover:text-matrix transition-colors">Privacy Policy</a>
+                <span>•</span>
+                <a href="#" class="hover:text-matrix transition-colors">Refund Policy</a>
+            </div>
+
+        </div>
+    </footer>
+s
+    <!-- Matrix Falling Characters Script -->
+    <script>
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%^&*()<>_+-=[]{}|;:,./~';
+        const fontSize = 16;
+        let columns = Math.floor(canvas.width / fontSize);
+        let drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrixRain() {
+            // Dark translucent background layer to create trailing fade effect
+            ctx.fillStyle = 'rgba(2, 8, 3, 0.08)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff66'; // Matrix Neon Green
+            ctx.font = fontSize + 'px "Share Tech Mono", monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrixRain, 33);
+    </script>
+</body>
+</html>
